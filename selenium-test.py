@@ -4,18 +4,19 @@ from time import sleep
 import sqlite3
 from datetime import date
 
-driver = webdriver.Firefox(executable_path='C:\\Users\\Lui19\\OneDrive\\Documentos\\geckodriver.exe')
+#fixed hardcoded PATH
+driver = webdriver.Firefox(executable_path=r'C:\geckodriver\geckodriver.exe')
 driver.implicitly_wait(10)
 data_atual = date.today()
 
-
 def login():
+    #temporary workarround for hardcoded email
+    login = open(r'email.txt').read()
     passwd = getpass.getpass()
     #pick up the page ids
     id_login = 'sign_in_email'
     id_pass = 'sign_in_password'
     name_btn = 'commit'
-    login = 'lui19masterson25@hotmail.com'
     driver.get('https://hackerone.com/users/sign_in')
     #Do the actions on the browser
     input_login = driver.find_element_by_id(id_login)
@@ -50,11 +51,7 @@ def private():
         sleep(5) 
     class_programs = 'spec-profile-name'
     select_private = driver.find_elements_by_class_name(class_programs)
-"""    #print all private programs
-    for printing in select_private:
-        name = printing.text
-        link = printing.get_attribute('href')
-        print(name, link) """
+
 
 def sqlite_connect():
     global conn

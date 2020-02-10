@@ -1,0 +1,6 @@
+*.exe
+*.log
+*log.txt
+selenium-test-facebook.py
+teste.py
+email.txt
